@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Universal Time Converter",
     "version": "1.0.0",
-    "description": "Convert timestamps between time zones instantly. Paste any date format - Unix, ISO, or natural dates. Auto-scan web pages to convert timestamps to your local time.",
+    "description": "Convert timestamps between timezones. Paste Unix, ISO, or natural dates. Auto-scan pages for timestamps.",
     "permissions": [
         "storage",
         "activeTab",
