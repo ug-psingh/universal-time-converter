@@ -1,0 +1,80 @@
+/* Content script styles for converted timestamps */
+
+.tz-timestamp {
+  position: relative !important;
+  display: inline-block !important;
+  background: linear-gradient(135deg, rgba(74, 144, 217, 0.15) 0%, rgba(74, 144, 217, 0.1) 100%) !important;
+  border: 1px solid rgba(74, 144, 217, 0.3) !important;
+  border-radius: 4px !important;
+  padding: 2px 6px !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace !important;
+  font-size: 0.95em !important;
+  color: #2563eb !important;
+  cursor: help !important;
+  white-space: nowrap !important;
+  transition: all 0.2s ease !important;
+  overflow: visible !important;
+}
+
+.tz-timestamp:hover {
+  background: linear-gradient(135deg, rgba(74, 144, 217, 0.25) 0%, rgba(74, 144, 217, 0.2) 100%) !important;
+  border-color: rgba(74, 144, 217, 0.5) !important;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .tz-timestamp {
+    background: linear-gradient(135deg, rgba(74, 144, 217, 0.2) 0%, rgba(74, 144, 217, 0.15) 100%) !important;
+    color: #60a5fa !important;
+    border-color: rgba(96, 165, 250, 0.4) !important;
+  }
+  
+  .tz-timestamp:hover {
+    background: linear-gradient(135deg, rgba(74, 144, 217, 0.3) 0%, rgba(74, 144, 217, 0.25) 100%) !important;
+    border-color: rgba(96, 165, 250, 0.6) !important;
+  }
+}
+
+/* Tooltip styles */
+.tz-timestamp[data-original]::after {
+  content: "Original: " attr(data-original) !important;
+  position: absolute !important;
+  bottom: calc(100% + 8px) !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: #1a1a2e !important;
+  color: #e0e0e0 !important;
+  padding: 8px 12px !important;
+  border-radius: 6px !important;
+  font-size: 12px !important;
+  font-weight: normal !important;
+  white-space: nowrap !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.2s ease, visibility 0.2s ease !important;
+  z-index: 2147483647 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  pointer-events: none !important;
+  line-height: 1.4 !important;
+}
+
+.tz-timestamp[data-original]::before {
+  content: '' !important;
+  position: absolute !important;
+  bottom: calc(100% + 2px) !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  border: 6px solid transparent !important;
+  border-top-color: #1a1a2e !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.2s ease, visibility 0.2s ease !important;
+  z-index: 2147483647 !important;
+  pointer-events: none !important;
+}
+
+.tz-timestamp[data-original]:hover::after,
+.tz-timestamp[data-original]:hover::before {
+  opacity: 1 !important;
+  visibility: visible !important;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Universal Time Converter</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🌐 Universal Time</h1>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="timezone">Converter</button>
+      <button class="tab-btn" data-tab="page">Scan Page</button>
+    </nav>
+
+    <!-- Converter Tab -->
+    <section id="timezone" class="tab-content active">
+      <p class="help-text">Paste any timestamp or date — we'll auto-detect the format and convert it to your chosen timezone.</p>
+      
+      <div class="input-group">
+        <label for="inputTime">Date & Time</label>
+        <input type="text" id="inputTime" placeholder="Paste timestamp: 1679347200, 2023-03-20T15:00:00Z, etc.">
+        <small>Supports: Unix (10/13 digits), ISO 8601, RFC 2822, natural dates</small>
+      </div>
+      
+      <div class="input-group">
+        <label for="fromTimezone">From Timezone</label>
+        <select id="fromTimezone"></select>
+      </div>
+      
+      <div class="input-group">
+        <label for="toTimezone">To Timezone</label>
+        <select id="toTimezone"></select>
+      </div>
+      
+      <button id="convertTimezone" class="btn primary">Convert</button>
+      
+      <div class="result-box" id="timezoneResult">
+        <span class="label">Converted Time:</span>
+        <span class="value" id="convertedTime">—</span>
+      </div>
+    </section>
+
+    <!-- Scan Page Tab -->
+    <section id="page" class="tab-content">
+      <p class="help-text">Automatically find and convert Unix timestamps on any webpage to readable dates in your timezone.</p>
+      
+      <div class="info-box">
+        <strong>How it works:</strong>
+        <ul>
+          <li>Toggle ON to scan the current page</li>
+          <li>Detects 10-digit (seconds) & 13-digit (ms) timestamps</li>
+          <li>Hover over converted times to see original value</li>
+        </ul>
+      </div>
+      
+      <div class="toggle-group">
+        <label class="toggle">
+          <input type="checkbox" id="enablePageConversion">
+          <span class="slider"></span>
+        </label>
+        <span>Enable on this page</span>
+      </div>
+      
+      <div class="input-group">
+        <label for="pageTimezone">Convert to Timezone</label>
+        <select id="pageTimezone"></select>
+      </div>
+      
+      <div class="input-group">
+        <label for="pageDisplayFormat">Display Format</label>
+        <select id="pageDisplayFormat">
+          <option value="local">Local Format</option>
+          <option value="full">Full Date & Time</option>
+          <option value="short">Short Date & Time</option>
+          <option value="dateOnly">Date Only</option>
+          <option value="timeOnly">Time Only</option>
+          <option value="relative">Relative Time</option>
+        </select>
+      </div>
+      
+      <div class="stats" id="conversionStats">
+        <span id="timestampCount">0</span> timestamps detected
+      </div>
+      
+      <button id="refreshPage" class="btn secondary">Refresh Detection</button>
+    </section>
+
+    <!-- Current Time Display -->
+    <footer>
+      <div class="current-time">
+        <span id="currentTimeLocal">—</span>
+        <small>Local Time</small>
+      </div>
+      <div class="credit">Made to solve frustration while debugging by: Prateek Singh</div>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
